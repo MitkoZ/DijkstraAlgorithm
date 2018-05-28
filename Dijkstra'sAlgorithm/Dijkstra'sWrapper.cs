@@ -14,9 +14,9 @@ namespace Dijkstra_sAlgorithm
             Dictionary<string, Vertex> verticesDictionary = new Dictionary<string, Vertex>();
             InitializeVerticesDictionary(sourcePoint, verticesStringList, verticesDictionary);
 
-            while (verticesDictionary.Values.ToList().Any(x => x.IsVisited == false && x.ShortestDistanceFromTarget != int.MaxValue))
+            while (verticesDictionary.Values.ToList().Any(x => x.IsProcessed == false && x.ShortestDistanceFromTarget != int.MaxValue))
             {
-                KeyValuePair<string, Vertex> keyValuePair = verticesDictionary.Where(x => x.Value.IsVisited == false).ToList().Min();
+                KeyValuePair<string, Vertex> keyValuePair = verticesDictionary.Where(x => x.Value.IsProcessed == false).ToList().Min();
                 string vertexKey = keyValuePair.Key;
                 Vertex currentVertex = keyValuePair.Value;
                 List<string> neighbourVertices = graph.GetNeighbourVerticesSorted(keyValuePair.Key);
@@ -30,7 +30,7 @@ namespace Dijkstra_sAlgorithm
                         verticesDictionary[neighbourVertexString].PreviousVertex = keyValuePair.Key;
                     }
                 }
-                verticesDictionary[vertexKey].IsVisited = true;
+                verticesDictionary[vertexKey].IsProcessed = true;
             }
 
             return FormShortestPath(targetPoint, verticesDictionary);

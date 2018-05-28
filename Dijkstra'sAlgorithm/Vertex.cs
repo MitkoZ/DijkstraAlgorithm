@@ -10,6 +10,6 @@ namespace Dijkstra_sAlgorithm
     {
         public int ShortestDistanceFromTarget { get; set; }
         public string PreviousVertex { get; set; }
-        public bool IsVisited { get; set; }
+        public bool IsProcessed { get; set; }
     }
 }
