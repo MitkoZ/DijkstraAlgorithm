@@ -41,7 +41,7 @@ namespace Dijkstra_sAlgorithm
         {
             Stack<string> traverseStack = new Stack<string>();
             KeyValuePair<string, Vertex> vertex = verticesDictionary.Where(x => x.Key == targetPoint).FirstOrDefault(); // the end node
-            while (vertex.Value.PreviousVertex != null) //it hasn't been reached by the chosen node
+            while (vertex.Value?.PreviousVertex != null) //it hasn't been reached by the chosen node
             {
                 traverseStack.Push(vertex.Value.PreviousVertex + " Goes To " + vertex.Key); //the end edge
                 vertex = verticesDictionary.Where(x => x.Key == vertex.Value.PreviousVertex).FirstOrDefault();
