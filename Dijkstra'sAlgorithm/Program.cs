@@ -12,8 +12,8 @@ namespace Dijkstra_sAlgorithm
         static void Main(string[] args)
         {
             Graph graph = Graph.LoadGraphFromTxtFile("Graph.txt");
-            string sourcePoint = "K";
-            string targetPoint = "F";
+            string sourcePoint = "F";
+            string targetPoint = "E";
             Stack<string> steps = Dijkstra_sWrapper.Dijkstra(sourcePoint, targetPoint, graph);
             PrintShortestPath(steps);
         }

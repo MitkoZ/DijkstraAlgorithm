@@ -35,9 +35,9 @@ namespace Dijkstra_sAlgorithm
 
         private List<Edge> graphEdges;
 
-        internal List<string> GetNeighbourVerticesSorted(string parentVertex)
+        internal List<string> GetNeighbourVertices(string parentVertex)
         {
-            return graphEdges.Where(x => x.StartNode == parentVertex).OrderBy(x => x.Weight).Select(x => x.EndNode).ToList();
+            return graphEdges.Where(x => x.StartNode == parentVertex).Select(x => x.EndNode).ToList();
         }
 
         internal int GetEdgeWeight(string startNode, string endNode)

@@ -1,5 +1,7 @@
 F E 50
 E F 50
+E C 3
+C E 3
 H F 5
 F H 5
 F C 30

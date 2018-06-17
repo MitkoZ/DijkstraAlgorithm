@@ -19,7 +19,7 @@ namespace Dijkstra_sAlgorithm
                 KeyValuePair<string, Vertex> keyValuePair = verticesDictionary.Where(x => x.Value.IsProcessed == false).ToList().Min();
                 string vertexKey = keyValuePair.Key;
                 Vertex currentVertex = keyValuePair.Value;
-                List<string> neighbourVertices = graph.GetNeighbourVerticesSorted(keyValuePair.Key);
+                List<string> neighbourVertices = graph.GetNeighbourVertices(keyValuePair.Key);
                 foreach (string neighbourVertexString in neighbourVertices)
                 {
                     Vertex neighbourVertex = verticesDictionary[neighbourVertexString];
