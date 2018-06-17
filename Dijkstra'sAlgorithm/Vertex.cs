@@ -8,7 +8,7 @@ namespace Dijkstra_sAlgorithm
 {
     internal class Vertex
     {
-        public int ShortestDistanceFromTarget { get; set; }
+        public int ShortestDistanceFromStartPoint { get; set; }
         public string PreviousVertex { get; set; }
         public bool IsProcessed { get; set; }
     }

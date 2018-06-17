@@ -10,9 +10,7 @@ namespace Dijkstra_sAlgorithm
     {
         internal static KeyValuePair<string, Vertex> Min(this List<KeyValuePair<string, Vertex>> dictionary) //gets the vertex with the minimum ShortestDistanceFromTarget in the form of a key value pair
         {
-            return dictionary.Where(x => x.Value.ShortestDistanceFromTarget == dictionary.ToList().Min(c => c.Value.ShortestDistanceFromTarget)).FirstOrDefault();
+            return dictionary.Where(x => x.Value.ShortestDistanceFromStartPoint == dictionary.ToList().Min(c => c.Value.ShortestDistanceFromStartPoint)).FirstOrDefault();
         }
-
-
     }
 }

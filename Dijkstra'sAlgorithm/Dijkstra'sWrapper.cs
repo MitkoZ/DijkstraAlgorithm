@@ -14,7 +14,7 @@ namespace Dijkstra_sAlgorithm
             Dictionary<string, Vertex> verticesDictionary = new Dictionary<string, Vertex>();
             InitializeVerticesDictionary(sourcePoint, verticesStringList, verticesDictionary);
 
-            while (verticesDictionary.Values.ToList().Any(x => x.IsProcessed == false && x.ShortestDistanceFromTarget != int.MaxValue))
+            while (verticesDictionary.Values.ToList().Any(x => x.IsProcessed == false && x.ShortestDistanceFromStartPoint != int.MaxValue))
             {
                 KeyValuePair<string, Vertex> keyValuePair = verticesDictionary.Where(x => x.Value.IsProcessed == false).ToList().Min();
                 string vertexKey = keyValuePair.Key;
@@ -23,10 +23,10 @@ namespace Dijkstra_sAlgorithm
                 foreach (string neighbourVertexString in neighbourVertices)
                 {
                     Vertex neighbourVertex = verticesDictionary[neighbourVertexString];
-                    int newDistanceFromStartVertex = currentVertex.ShortestDistanceFromTarget + graph.GetEdgeWeight(keyValuePair.Key, neighbourVertexString);
-                    if (newDistanceFromStartVertex < neighbourVertex.ShortestDistanceFromTarget)
+                    int newDistanceFromStartVertex = currentVertex.ShortestDistanceFromStartPoint + graph.GetEdgeWeight(keyValuePair.Key, neighbourVertexString);
+                    if (newDistanceFromStartVertex < neighbourVertex.ShortestDistanceFromStartPoint)
                     {
-                        verticesDictionary[neighbourVertexString].ShortestDistanceFromTarget = newDistanceFromStartVertex;
+                        verticesDictionary[neighbourVertexString].ShortestDistanceFromStartPoint = newDistanceFromStartVertex;
                         verticesDictionary[neighbourVertexString].PreviousVertex = keyValuePair.Key;
                     }
                 }
@@ -57,12 +57,12 @@ namespace Dijkstra_sAlgorithm
             {
                 Vertex vertex = new Vertex
                 {
-                    ShortestDistanceFromTarget = int.MaxValue
+                    ShortestDistanceFromStartPoint = int.MaxValue
                 };
 
                 if (vertexString == sourcePoint)
                 {
-                    vertex.ShortestDistanceFromTarget = 0;
+                    vertex.ShortestDistanceFromStartPoint = 0;
                 }
 
                 verticesDictionary.Add(vertexString, vertex);
